@@ -1,4 +1,4 @@
-
+import unittest
 class Employee:
     def __init__(self, staff_Id, last_name, first_name,Reg_hours, hourly_rate, OT_multiple, Tax_credit, Standard_band):
         self.staff_Id = staff_Id
@@ -10,7 +10,7 @@ class Employee:
         self.Tax_credit = Tax_credit
         self.Standard_band = Standard_band
 
-    def computepayment(self, worked_hours, Date):
+    def computePayment(self, worked_hours, Date):
 
 
         # if standard tax rate is 20% then 20/100=0.2  [Hence, standard_pay = 0.2]
@@ -23,51 +23,74 @@ class Employee:
         Employee_Details = {}
 
 
-        if worked_hours >self.Reg_hours:
+        if worked_hours > self.Reg_hours:
             overtime_hours = worked_hours - self.Reg_hours
         else:
+
             self.Reg_hours = worked_hours
 
 
-        overtime_Rate = self.OT_multiple * self.hourly_rate
+        Overtime_Rate = self.OT_multiple * self.hourly_rate
+
 
         regularpay = self.Reg_hours * self.hourly_rate
 
-        overtime_pay = overtime_hours * overtime_Rate
 
-        grossPay = regularpay + overtime_pay
+        Overtime_pay = overtime_hours * Overtime_Rate
+
+
+        grossPay = regularpay + Overtime_pay
 
 
         if grossPay > self.Standard_band:
             standardTax = standardTaxRate * self.Standard_band
 
-            higherRatePay = grossPay- self.Standard_band
 
+            higherRatePay = grossPay - self.Standard_band
         else:
-            standardTax= grossPay * standardTaxRate
+            standardTax = grossPay * standardTaxRate
 
 
+        higerTax = higherTaxRate * higherRatePay
 
-            #higher tax
-            higherTax = higherTaxRate * standardTax
 
-            totalTax = higherTax + higherRatePay
+        totalTax = higerTax + standardTax
 
-    #if totaltax > taxcredit nettax would be totaltx+ tax credit
+
         if (totalTax > self.Tax_credit):
             netTax = totalTax - self.Tax_credit
         else:
             netTax = totalTax
 
-
-           #PRSI
+        # PRSI
         PRSI = PRSIrate * grossPay
 
 
-        #net deductiom
-
         netdeduction = netTax + PRSI
 
-        netPay= grossPay - netdeduction
+
+        netPay = grossPay - netdeduction
+
+
+        Employee_Details["name"] =
+        Employee_Details['Regular Hours Worked'] =
+        Employee_Details["Overtime Hours Worked"] =
+        Employee_Details["Regular Rate"] =
+        Employee_Details["Overtime Rate"] =
+        Employee_Details["Regular Pay"] =
+        Employee_Details["Overtime Pay"] =
+        Employee_Details["Gross Pay"] =
+        Employee_Details["Standard Rate Pay"] =
+        Employee_Details["Higher Rate Pay"] =
+        Employee_Details["Standard Tax"] =
+        Employee_Details["Higher Tax"] =
+        Employee_Details["Total Tax"] =
+        Employee_Details["Tax Credit"] =
+        Employee_Details["Net Tax"] =
+        Employee_Details["PRSI"] = PRSI
+        Employee_Details["Net Deductions"] =
+        Employee_Details["Net Pay"] =
+
+
 
 
