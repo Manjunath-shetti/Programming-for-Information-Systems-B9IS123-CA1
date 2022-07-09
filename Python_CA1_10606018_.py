@@ -92,6 +92,13 @@ class Employee:
         Employee_Details["Net Deductions"] = (netdeduction)
         Employee_Details["Net Pay"] = (netPay)
 
+        print(Employee_Details)
+
+        return Employee_Details
+
+jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+pi = jg.computePayment(42, '31/10/2021')
+
 
 
 
