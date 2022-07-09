@@ -102,9 +102,9 @@ class Employee:
 
     class test_payment(unittest.TestCase):
 
-       
+
         def net_pay_cannot_exceed_gross_pay(self):
-            net_pay = Employee(10601018, 'Manjunath', 'Manjunath', 37, 16, 1.5, 72, 710)
+            net_pay = Employee(10601018, 'Manjunath', 'shetti', 37, 16, 1.5, 72, 710)
             pi = net_pay.computePayment(42, '31/10/2021')
             self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
 
@@ -116,4 +116,14 @@ class Employee:
 
 
 
+
+        # reg_hours = Employee(10606018, 'Manjunath', 'shetti', 37, 16, 1.5, 72, 710)
+        # pi = reg_hours.computePayment(42, '31/10/2021')
+        # self.assertLessEqual(pi['Regular Hours Worked'], pi["Regular Hours Worked"] + pi["Overtime Hours Worked"])
+
+    #  higher tax cannot be negative
+    def Higher_Tax_cannot_be_negative(self):
+        high_tax = Employee(10606018, 'Manjunath', 'shetti', 37, 16, 1.5, 72, 710)
+        pi = high_tax.computePayment(1, '31/10/2021')
+        self.assertGreater(pi['Higher Tax'], -1)
 
