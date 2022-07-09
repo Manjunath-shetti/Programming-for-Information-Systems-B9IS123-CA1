@@ -72,24 +72,25 @@ class Employee:
         netPay = grossPay - netdeduction
 
 
-        Employee_Details["name"] =
-        Employee_Details['Regular Hours Worked'] =
-        Employee_Details["Overtime Hours Worked"] =
-        Employee_Details["Regular Rate"] =
-        Employee_Details["Overtime Rate"] =
-        Employee_Details["Regular Pay"] =
-        Employee_Details["Overtime Pay"] =
-        Employee_Details["Gross Pay"] =
-        Employee_Details["Standard Rate Pay"] =
-        Employee_Details["Higher Rate Pay"] =
-        Employee_Details["Standard Tax"] =
-        Employee_Details["Higher Tax"] =
-        Employee_Details["Total Tax"] =
-        Employee_Details["Tax Credit"] =
-        Employee_Details["Net Tax"] =
+        Employee_Details["name"] = self.last_name + " " + self.first_name
+        Employee_Details["Date"] = Date
+        Employee_Details['Regular Hours Worked'] = self.Reg_hours
+        Employee_Details["Overtime Hours Worked"] = overtime_hours
+        Employee_Details["Regular Rate"] = self.hourly_rate
+        Employee_Details["Overtime Rate"] = Overtime_Rate
+        Employee_Details["Regular Pay"] = regularpay
+        Employee_Details["Overtime Pay"] = Overtime_pay
+        Employee_Details["Gross Pay"] = grossPay
+        Employee_Details["Standard Rate Pay"] = self.Standard_band
+        Employee_Details["Higher Rate Pay"] = higherRatePay
+        Employee_Details["Standard Tax"] = standardTax
+        Employee_Details["Higher Tax"] = higherTax
+        Employee_Details["Total Tax"] = (totalTax)
+        Employee_Details["Tax Credit"] = self.Tax_credit
+        Employee_Details["Net Tax"] = (netTax)
         Employee_Details["PRSI"] = PRSI
-        Employee_Details["Net Deductions"] =
-        Employee_Details["Net Pay"] =
+        Employee_Details["Net Deductions"] = (netdeduction)
+        Employee_Details["Net Pay"] = (netPay)
 
 
 
