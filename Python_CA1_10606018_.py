@@ -43,7 +43,7 @@ class Employee:
 
 
         if grossPay > self.Standard_band:
-            standardTax = standardTaxRate * self.Standard_band
+            standardTax = standardTaxRate * self.overtime_hours
 
 
             higherRatePay = grossPay - self.Standard_band
@@ -54,7 +54,7 @@ class Employee:
         higerTax = higherTaxRate * higherRatePay
 
 
-        totalTax = higerTax + standardTax
+        totalTax = higerTax + higherRatePay
 
 
         if (totalTax > self.Tax_credit):
@@ -99,6 +99,12 @@ class Employee:
 jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
 pi = jg.computePayment(42, '31/10/2021')
 
+
+def test_netpay_cannot_be_negative(self):
+    net_pay = Employee(10606018, 'Manju', 'shetti', 37, 16, 1.5, 72, 710)
+    pi = net_pay.computePayment(25, '31/10/2021')
+    pi = net_pay.computePayment(1, '31/10/2021')
+    self.assertGreater(pi['Net Pay'], -1)
 
 
 
