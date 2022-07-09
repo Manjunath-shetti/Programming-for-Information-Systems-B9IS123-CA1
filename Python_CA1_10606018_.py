@@ -96,15 +96,24 @@ class Employee:
 
         return Employee_Details
 
-jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-pi = jg.computePayment(42, '31/10/2021')
+# jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+# pi = jg.computePayment(42, '31/10/2021')
 
 
-def test_netpay_cannot_be_negative(self):
-    net_pay = Employee(10606018, 'Manju', 'shetti', 37, 16, 1.5, 72, 710)
-    pi = net_pay.computePayment(25, '31/10/2021')
-    pi = net_pay.computePayment(1, '31/10/2021')
-    self.assertGreater(pi['Net Pay'], -1)
+    class test_payment(unittest.TestCase):
+
+       
+        def net_pay_cannot_exceed_gross_pay(self):
+            net_pay = Employee(10601018, 'Manjunath', 'Manjunath', 37, 16, 1.5, 72, 710)
+            pi = net_pay.computePayment(42, '31/10/2021')
+            self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
+
+        # overtime  pay can not be negative
+        def overtime_pay_cannotbenegative(self):
+            overPay = Employee(10606018, 'Manjunath', 'shetti', 37, 16, 1.5, 72, 710)
+            pi = overPay.computePayment(42, '31/10/2021')
+            self.assertGreater(pi['Overtime Pay'], -1)
+
 
 
 
