@@ -87,10 +87,10 @@ class Employee:
         Employee_Details["Higher Tax"] = higherTax
         Employee_Details["Total Tax"] = (totalTax)
         Employee_Details["Tax Credit"] = self.Tax_credit
-        Employee_Details["Net Tax"] = (netTax)
+        Employee_Details["Net Tax"] = round(netTax, 2)
         Employee_Details["PRSI"] = PRSI
-        Employee_Details["Net Deductions"] = (netdeduction)
-        Employee_Details["Net Pay"] = (netPay)
+        Employee_Details["Net Deductions"] = round(netdeduction, 2)
+        Employee_Details["Net Pay"] = round(netPay, 2)
 
         print(Employee_Details)
 
