@@ -116,40 +116,40 @@ class Employee:
         # returning(Employee Details) dictionary in key value formate
         return Employee_Details
 
-# jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-# pi = jg.computePayment(42, '31/10/2021')
+jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+pi = jg.computePayment(42, '31/10/2021')
 
-#Creating Test Class for Testcases
-class testpayment(unittest.TestCase):
-
-     # Test method to test net pay cannot exceed or greater than Gross pay
-    def testnet_pay_cannot_exceed_gross_pay(self):
-        net_pay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-        pi = net_pay.computePayment(1, '31/10/2021')
-        self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
-
-     # Test overtime  pay can not be negative
-    def test_overtime_pay_cannot_be_negative(self):
-        overpay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-        pi = overpay.computePayment(1, '31/10/2021')
-        self.assertGreater(pi['Overtime Pay'], -1)
-
-     #  test regular hours  cannot exeed than hours worked
-    def test_regular_hours_cannot_exceed_hours_worked(self):
-        regular_hours = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-        pi = regular_hours.computePayment(1, '31/10/2021')
-        self.assertLessEqual(pi['Regular Hours Worked'], pi["Regular Hours Worked"] + pi["Overtime Hours Worked"])
-
-
-     # Test Higher Tax cannot be negative
-    def test_Higher_Tax_cannot_be_negative(self):
-        higher_tax = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-        pi = higher_tax.computePayment(1, '31/10/2021')
-        self.assertGreater(pi['Higher Tax'], -1)
-
-
-    # test to check netpay cannot negative
-    def test_netpay_cannot_be_negative(self):
-        net_pay = Employee(10581018, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-        pi = net_pay.computePayment(1, '31/10/2021')
-        self.assertGreater(pi['Net Pay'], -1)
+# #Creating Test Class for Testcases
+# class testpayment(unittest.TestCase):
+#
+#      # Test method to test net pay cannot exceed or greater than Gross pay
+#     def testnet_pay_cannot_exceed_gross_pay(self):
+#         net_pay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+#         pi = net_pay.computePayment(1, '31/10/2021')
+#         self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
+#
+#      # Test overtime  pay can not be negative
+#     def test_overtime_pay_cannot_be_negative(self):
+#         overpay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+#         pi = overpay.computePayment(1, '31/10/2021')
+#         self.assertGreater(pi['Overtime Pay'], -1)
+#
+#      #  test regular hours  cannot exeed than hours worked
+#     def test_regular_hours_cannot_exceed_hours_worked(self):
+#         regular_hours = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+#         pi = regular_hours.computePayment(1, '31/10/2021')
+#         self.assertLessEqual(pi['Regular Hours Worked'], pi["Regular Hours Worked"] + pi["Overtime Hours Worked"])
+#
+#
+#      # Test Higher Tax cannot be negative
+#     def test_Higher_Tax_cannot_be_negative(self):
+#         higher_tax = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+#         pi = higher_tax.computePayment(1, '31/10/2021')
+#         self.assertGreater(pi['Higher Tax'], -1)
+#
+#
+#     # test to check netpay cannot negative
+#     def test_netpay_cannot_be_negative(self):
+#         net_pay = Employee(10581018, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+#         pi = net_pay.computePayment(1, '31/10/2021')
+#         self.assertGreater(pi['Net Pay'], -1)
