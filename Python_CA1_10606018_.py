@@ -7,10 +7,11 @@
 # import unittest is used to test the unit of source code for testing the methods
 import unittest
 
-#creating class- Employee and self keyword is used to access the instace defined in Employee class
+
+# creating class- Employee and self keyword is used to access the instace defined in Employee class
 # and Passing the parameters to constructor to initialise them
 class Employee:
-    def __init__(self, staff_Id, last_name,first_name,Reg_hours, hourly_rate, OT_multiple, Tax_credit, Standard_band):
+    def __init__(self, staff_Id, last_name, first_name, Reg_hours, hourly_rate, OT_multiple, Tax_credit, Standard_band):
 
         # initialising- data members of class Employee
         self.staff_Id = staff_Id
@@ -22,8 +23,7 @@ class Employee:
         self.Tax_credit = Tax_credit
         self.Standard_band = Standard_band
 
-
-    #creating Method omputepayment, further Passing the Parameters
+    # creating Method omputepayment, further Passing the Parameters
     def computePayment(self, worked_hours, Date):
 
         # creating and initialising the variables
@@ -36,16 +36,15 @@ class Employee:
         overtime_hours, regularpay, overtime_pay, Overtime_Rate, grossPay, standard_pay, standardTax, netPay = 0, 0, 0, 0, 0, 0, 0, 0
         standardTaxRate, higherRatePay, higherTax, higherTaxRate, totalTax, netTax, PRSIrate, netdeduction = 0.2, 0, 0, 0.4, 0, 0, 0.04, 0
 
-
-        #{}- Empty Ditionary for storing the Data
+        # {}- Empty Ditionary for storing the Data
         Employee_Details = {}
 
         # if hours worked Exceeds regular hours then the variation between Regular hours and worked hours are stored in Overtime hours
-        #else Regular hours will be equal to Worked hours
+        # else Regular hours will be equal to Worked hours
         if worked_hours > self.Reg_hours:
             overtime_hours = worked_hours - self.Reg_hours
         else:
-             self.Reg_hours = worked_hours
+            self.Reg_hours = worked_hours
 
         # over time rate is calculated by multiplying  OTMultiple and hourly rate
         Overtime_Rate = self.OT_multiple * self.hourly_rate
@@ -56,24 +55,23 @@ class Employee:
         # Over time hours is multiplied with Overtime rate and stored in Overtime_pay
         Overtime_pay = overtime_hours * Overtime_Rate
 
-        #gross pay is obtained by adding Regularpay and Overtimepay
+        # gross pay is obtained by adding Regularpay and Overtimepay
         grossPay = regularpay + Overtime_pay
 
         # if gross pay exceeds standard band then standard Tax will be 20% of  standard band else standardTax  will be 20% of grosspay
         if grossPay > self.Standard_band:
-          standardTax = standardTaxRate * self.Standard_band
+            standardTax = standardTaxRate * self.Standard_band
 
-        #variation between Grosspay and standard band is higherRatePAy
-          higherRatePay = grossPay - self.Standard_band
+            # variation between Grosspay and standard band is higherRatePAy
+            higherRatePay = grossPay - self.Standard_band
         else:
             standardTax = grossPay * standardTaxRate
 
-        #Higher Tax is obtained by multiplying Higher Tax rate and Higher rate Pay
+        # Higher Tax is obtained by multiplying Higher Tax rate and Higher rate Pay
         higherTax = higherTaxRate * higherRatePay
 
-        #Total Tax obtained by adding Higher Tax and Higher rate pay
+        # Total Tax obtained by adding Higher Tax and Higher rate pay
         totalTax = higherTax + standardTax
-
 
         # if total Tax is greater than tax credit
         # then Net tax obtained by subtarating Totaltax - Tax redit
@@ -87,14 +85,14 @@ class Employee:
         # PRSI rate multiplied with GRoss pay to obtain PRSI
         PRSI = PRSIrate * grossPay
 
-        #Adding Net tax and PRSI  to obtain Netdeduction
+        # Adding Net tax and PRSI  to obtain Netdeduction
         netdeduction = netTax + PRSI
 
-        #Net pay obtained by subtarcting gross pay and the net amount to be deducted
+        # Net pay obtained by subtarcting gross pay and the net amount to be deducted
         netPay = grossPay - netdeduction
 
         # storing all the varibles/data  into dictionary
-        Employee_Details["name"] = self.last_name + " " + self.first_name
+        Employee_Details["name"] = self.first_name + " " + self.last_name
         Employee_Details["Date"] = Date
         Employee_Details['Regular Hours Worked'] = self.Reg_hours
         Employee_Details["Overtime Hours Worked"] = overtime_hours
@@ -114,47 +112,47 @@ class Employee:
         Employee_Details["Net Deductions"] = round(netdeduction, 2)
         Employee_Details["Net Pay"] = round(netPay, 2)
 
-
-        #printing Employee Details
+        # printing Employee Details
         print(Employee_Details)
 
         # returning(Employee Details) dictionary in key value formate
         return Employee_Details
 
+
 # jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
 # pi = jg.computePayment(42, '31/10/2021')
 
-#Creating Test Class for Testcases
+# Creating Test Class for Testcases
 class testpayment(unittest.TestCase):
 
-     # Test method to test net pay cannot exceed or greater than Gross pay
+    # Test method to test net pay cannot exceed or greater than Gross pay
     def test_net_pay_cannot_exceed_gross_pay(self):
         net_pay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
         pi = net_pay.computePayment(1, '31/10/2021')
         self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
 
-     # Test overtime  pay can not be negative
+    # Test overtime  pay can not be negative
     def test_overtime_pay_cannot_be_negative(self):
         overpay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
         pi = overpay.computePayment(1, '31/10/2021')
         self.assertGreater(pi['Overtime Pay'], -1)
 
-     # test regular hours  cannot exeed than hours worked
+    # test regular hours  cannot exeed than hours worked
     def test_regular_hours_cannot_exceed_hours_worked(self):
         regular_hours = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
         pi = regular_hours.computePayment(1, '31/10/2021')
         self.assertLessEqual(pi['Regular Hours Worked'], pi["Regular Hours Worked"] + pi["Overtime Hours Worked"])
 
-
-     # Test Higher Tax cannot be negative
+    # Test Higher Tax cannot be negative
     def test_Higher_Tax_cannot_be_negative(self):
         higher_tax = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
         pi = higher_tax.computePayment(1, '31/10/2021')
         self.assertGreater(pi['Higher Tax'], -1)
-
 
     # test to check netpay cannot negative
     def test_net_pay_cannot_be_negative(self):
         net_pay = Employee(10581018, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
         pi = net_pay.computePayment(1, '31/10/2021')
         self.assertGreater(pi['Net Pay'], -1)
+
+
