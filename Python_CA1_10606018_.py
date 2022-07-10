@@ -148,6 +148,8 @@ class testpayment(unittest.TestCase):
         self.assertGreater(pi['Higher Tax'], -1)
 
 
-
-
-
+    # test to check netpay cannot negative
+    def test_netpay_cannot_be_negative(self):
+        net_pay = Employee(10581018, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+        pi = net_pay.computePayment(1, '31/10/2021')
+        self.assertGreater(pi['Net Pay'], -1)
