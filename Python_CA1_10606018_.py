@@ -43,7 +43,7 @@ class Employee:
              self.Reg_hours = worked_hours
 
         # over time rate is calculated by multiplying  OTMultiple and hourly rate
-        Over_time_Rate = self.OT_multiple * self.hourly_rate
+        Overtime_Rate = self.OT_multiple * self.hourly_rate
 
         #  regular hours are multiplied with  hourly rate and stored in regular pay
         regularpay = self.Reg_hours * self.hourly_rate
@@ -55,7 +55,6 @@ class Employee:
         grossPay = regularpay + Overtime_pay
 
         # if gross pay exceeds standard band then standard Tax will be 20% of  standard band else standardTax  will be 20% of grosspay
-
         if grossPay > self.Standard_band:
           standardTax = standardTaxRate * self.Standard_band
 
@@ -65,10 +64,10 @@ class Employee:
             standardTax = grossPay * standardTaxRate
 
        #Higher Tax is obtained by multiplying Higher Tax rate and Higher rate Pay
-        higerTax = higherTaxRate * higherRatePay
+        higherTax = higherTaxRate * higherRatePay
 
         #Total Tax obtained by adding Higher Tax and Higher rate pay
-        totalTax = higherTax + higherRatePay
+        totalTax = higherTax + standardTax
 
 
         # if total Tax is greater than tax credit
@@ -98,12 +97,12 @@ class Employee:
         Employee_Details["Overtime Rate"] = Overtime_Rate
         Employee_Details["Regular Pay"] = regularpay
         Employee_Details["Overtime Pay"] = Overtime_pay
-        Employee_Details["Gross Pay"] = grossPay
+        Employee_Details["Gross Pay"] = round(grossPay)
         Employee_Details["Standard Rate Pay"] = self.Standard_band
         Employee_Details["Higher Rate Pay"] = higherRatePay
         Employee_Details["Standard Tax"] = standardTax
         Employee_Details["Higher Tax"] = higherTax
-        Employee_Details["Total Tax"] = (totalTax)
+        Employee_Details["Total Tax"] = round(totalTax, 2)
         Employee_Details["Tax Credit"] = self.Tax_credit
         Employee_Details["Net Tax"] = round(netTax, 2)
         Employee_Details["PRSI"] = PRSI
