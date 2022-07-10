@@ -1,9 +1,16 @@
+# student Name : Manjunath Prakash Shetti
+# Student id: 10606018
+# subject/module : Programming for Information systems With Computing (B9IS123_2122_TMD2)
+# Git hub link- https://github.com/Manjunath-shetti/Programming-for-Information-Systems-B9IS123-CA1
+
+
+# import unittest is used to test the unit of source code for testing the methods
 import unittest
 
-
-#creating class- Employee
+#creating class- Employee and self keyword is used to access the instace defined in Employee class
+# and Passing the parameters to constructor to initialise them
 class Employee:
-    def __init__(self, staff_Id, last_name, first_name,Reg_hours, hourly_rate, OT_multiple, Tax_credit, Standard_band):
+    def __init__(self, staff_Id, last_name,first_name,Reg_hours, hourly_rate, OT_multiple, Tax_credit, Standard_band):
 
         # initialising- data members of class Employee
         self.staff_Id = staff_Id
@@ -26,8 +33,6 @@ class Employee:
         # then 40/100=0.4 [Hence, higherTaxRate = 0.4]
         # if higher tax rate is 4% then
         # 4/100=0.04 [Hence, PRSIrate = 0.04]
-
-
         overtime_hours, regularpay, overtime_pay, Overtime_Rate, grossPay, standard_pay, standardTax, netPay = 0, 0, 0, 0, 0, 0, 0, 0
         standardTaxRate, higherRatePay, higherTax, higherTaxRate, totalTax, netTax, PRSIrate, netdeduction = 0.2, 0, 0, 0.4, 0, 0, 0.04, 0
 
@@ -63,7 +68,7 @@ class Employee:
         else:
             standardTax = grossPay * standardTaxRate
 
-       #Higher Tax is obtained by multiplying Higher Tax rate and Higher rate Pay
+        #Higher Tax is obtained by multiplying Higher Tax rate and Higher rate Pay
         higherTax = higherTaxRate * higherRatePay
 
         #Total Tax obtained by adding Higher Tax and Higher rate pay
@@ -116,40 +121,40 @@ class Employee:
         # returning(Employee Details) dictionary in key value formate
         return Employee_Details
 
-jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-pi = jg.computePayment(42, '31/10/2021')
+# jg = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+# pi = jg.computePayment(42, '31/10/2021')
 
-# #Creating Test Class for Testcases
-# class testpayment(unittest.TestCase):
-#
-#      # Test method to test net pay cannot exceed or greater than Gross pay
-#     def testnet_pay_cannot_exceed_gross_pay(self):
-#         net_pay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-#         pi = net_pay.computePayment(1, '31/10/2021')
-#         self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
-#
-#      # Test overtime  pay can not be negative
-#     def test_overtime_pay_cannot_be_negative(self):
-#         overpay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-#         pi = overpay.computePayment(1, '31/10/2021')
-#         self.assertGreater(pi['Overtime Pay'], -1)
-#
-#      #  test regular hours  cannot exeed than hours worked
-#     def test_regular_hours_cannot_exceed_hours_worked(self):
-#         regular_hours = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-#         pi = regular_hours.computePayment(1, '31/10/2021')
-#         self.assertLessEqual(pi['Regular Hours Worked'], pi["Regular Hours Worked"] + pi["Overtime Hours Worked"])
-#
-#
-#      # Test Higher Tax cannot be negative
-#     def test_Higher_Tax_cannot_be_negative(self):
-#         higher_tax = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-#         pi = higher_tax.computePayment(1, '31/10/2021')
-#         self.assertGreater(pi['Higher Tax'], -1)
-#
-#
-#     # test to check netpay cannot negative
-#     def test_netpay_cannot_be_negative(self):
-#         net_pay = Employee(10581018, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
-#         pi = net_pay.computePayment(1, '31/10/2021')
-#         self.assertGreater(pi['Net Pay'], -1)
+#Creating Test Class for Testcases
+class testpayment(unittest.TestCase):
+
+     # Test method to test net pay cannot exceed or greater than Gross pay
+    def test_net_pay_cannot_exceed_gross_pay(self):
+        net_pay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+        pi = net_pay.computePayment(1, '31/10/2021')
+        self.assertLessEqual(pi['Net Pay'], pi['Gross Pay'])
+
+     # Test overtime  pay can not be negative
+    def test_overtime_pay_cannot_be_negative(self):
+        overpay = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+        pi = overpay.computePayment(1, '31/10/2021')
+        self.assertGreater(pi['Overtime Pay'], -1)
+
+     # test regular hours  cannot exeed than hours worked
+    def test_regular_hours_cannot_exceed_hours_worked(self):
+        regular_hours = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+        pi = regular_hours.computePayment(1, '31/10/2021')
+        self.assertLessEqual(pi['Regular Hours Worked'], pi["Regular Hours Worked"] + pi["Overtime Hours Worked"])
+
+
+     # Test Higher Tax cannot be negative
+    def test_Higher_Tax_cannot_be_negative(self):
+        higher_tax = Employee(12345, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+        pi = higher_tax.computePayment(1, '31/10/2021')
+        self.assertGreater(pi['Higher Tax'], -1)
+
+
+    # test to check netpay cannot negative
+    def test_net_pay_cannot_be_negative(self):
+        net_pay = Employee(10581018, 'Green', 'Joe', 37, 16, 1.5, 72, 710)
+        pi = net_pay.computePayment(1, '31/10/2021')
+        self.assertGreater(pi['Net Pay'], -1)
